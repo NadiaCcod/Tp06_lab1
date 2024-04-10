@@ -28,7 +28,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jmAdminitracion = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmProducto = new javax.swing.JMenuItem();
         jmConsultas = new javax.swing.JMenu();
         jmPorRubro = new javax.swing.JMenuItem();
         jmPorNombre = new javax.swing.JMenuItem();
@@ -38,8 +38,8 @@ public class Menu extends javax.swing.JFrame {
 
         jmAdminitracion.setText("Administracion");
 
-        jMenuItem1.setText("Productos");
-        jmAdminitracion.add(jMenuItem1);
+        jmProducto.setText("Productos");
+        jmAdminitracion.add(jmProducto);
 
         jMenuBar1.add(jmAdminitracion);
 
@@ -118,11 +118,11 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jmAdminitracion;
     private javax.swing.JMenu jmConsultas;
     private javax.swing.JMenuItem jmPorNombre;
     private javax.swing.JMenuItem jmPorPrecio;
     private javax.swing.JMenuItem jmPorRubro;
+    private javax.swing.JMenuItem jmProducto;
     // End of variables declaration//GEN-END:variables
 }
