@@ -29,7 +29,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jmAdminitracion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmConsultas = new javax.swing.JMenu();
         jmPorRubro = new javax.swing.JMenuItem();
         jmPorNombre = new javax.swing.JMenuItem();
         jmPorPrecio = new javax.swing.JMenuItem();
@@ -43,7 +43,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jmAdminitracion);
 
-        jMenu2.setText("Consultas");
+        jmConsultas.setText("Consultas");
 
         jmPorRubro.setText("Por Rubro");
         jmPorRubro.addActionListener(new java.awt.event.ActionListener() {
@@ -51,15 +51,15 @@ public class Menu extends javax.swing.JFrame {
                 jmPorRubroActionPerformed(evt);
             }
         });
-        jMenu2.add(jmPorRubro);
+        jmConsultas.add(jmPorRubro);
 
         jmPorNombre.setText("Por Nombre");
-        jMenu2.add(jmPorNombre);
+        jmConsultas.add(jmPorNombre);
 
         jmPorPrecio.setText("Por Precio");
-        jMenu2.add(jmPorPrecio);
+        jmConsultas.add(jmPorPrecio);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmConsultas);
 
         setJMenuBar(jMenuBar1);
 
@@ -117,10 +117,10 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jmAdminitracion;
+    private javax.swing.JMenu jmConsultas;
     private javax.swing.JMenuItem jmPorNombre;
     private javax.swing.JMenuItem jmPorPrecio;
     private javax.swing.JMenuItem jmPorRubro;
