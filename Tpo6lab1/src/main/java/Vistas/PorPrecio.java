@@ -6,7 +6,7 @@ package Vistas;
 
 /**
  *
- * @author Mica
+ * @author Juanjo
  */
 public class PorPrecio extends javax.swing.JInternalFrame {
 
