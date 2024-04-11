@@ -224,7 +224,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-         // TODO add your handling code here:
+         // TODO add your handling code here:555
         int codigo;
         double precio;
         int stock;
