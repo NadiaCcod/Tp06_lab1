@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import entidades.Categoria;
 import entidades.Producto;
 import java.util.TreeSet;
 
@@ -12,6 +13,7 @@ import java.util.TreeSet;
  * @author sapat
  */
 public class GestionDeProductos extends javax.swing.JInternalFrame {
+
     private static TreeSet<Producto> productos;
 
     /**
@@ -19,8 +21,8 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
      */
     public GestionDeProductos() {
         initComponents();
-        this.productos=productos;
-        //llenarCombo();
+        this.productos = productos;
+        llenarCombo();
     }
 
     /**
@@ -68,8 +70,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jLabel4.setText("Precio");
 
         jLabel5.setText("Rubro");
-
-        jcRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestibles", "Limpieza", "Perfumeria" }));
 
         jLabel6.setText("Stock");
 
@@ -161,17 +161,23 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-       
-        
-    }//GEN-LAST:event_jbBuscarActionPerformed
 
-//    private void llenarCombo(){
-//        jcProducto.addItem(new Categoria(1, "Limpieza"));
-//        jcProducto.addItem(new Categoria(2, "Comestibles"));
-//        jcProducto.addItem(new Categoria(3, "Perfumeria") );
-//    }
+
+    }//GEN-LAST:event_jbBuscarActionPerformed
+    private void llenarCombo() {
+        jcRubro.addItem(new Categoria(1, "Limpieza"));
+        jcRubro.addItem(new Categoria(2, "Comestibles"));
+        jcRubro.addItem(new Categoria(3, "Perfumeria"));
+    }
+    private void limpiar(){
+      jtCodigo.setText("");
+      jtDescripcion.setText("");
+      jtPrecio.setText("");
+      jtStock.setText("");
+      jcRubro.setSelectedIndex(0);
     
-    
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -185,7 +191,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcRubro;
+    private javax.swing.JComboBox<Categoria> jcRubro;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtDescripcion;
     private javax.swing.JTextField jtPrecio;
