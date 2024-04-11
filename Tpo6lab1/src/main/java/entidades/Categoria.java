@@ -9,5 +9,7 @@ package entidades;
  * @author sapat
  */
 public class Categoria {
-    
+   private int codigo;
+   private String nombre;
+   
 }
