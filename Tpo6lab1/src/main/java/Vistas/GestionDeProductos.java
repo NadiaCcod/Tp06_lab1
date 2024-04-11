@@ -57,14 +57,17 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jbNuevo.setBackground(new java.awt.Color(153, 153, 255));
         jbNuevo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jbNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jtCodigo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jbGuardar.setBackground(new java.awt.Color(153, 153, 255));
         jbGuardar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jbGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,14 +80,12 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jbEliminar.setBackground(new java.awt.Color(153, 153, 255));
         jbEliminar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setText("Eliminar");
 
         jtDescripcion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jbSalir.setBackground(new java.awt.Color(255, 102, 102));
         jbSalir.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jbSalir.setForeground(new java.awt.Color(0, 0, 0));
         jbSalir.setText("Salir");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -182,7 +183,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +222,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcRubroActionPerformed
@@ -231,18 +232,29 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void jtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtStockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtStockActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        jtCodigo.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+        jcRubro.setSelectedIndex(0);
+        
+
+    }//GEN-LAST:event_jbNuevoActionPerformed
     private void llenarCombo() {
         jcRubro.addItem(new Categoria(1, "Limpieza"));
         jcRubro.addItem(new Categoria(2, "Comestibles"));
         jcRubro.addItem(new Categoria(3, "Perfumeria"));
     }
-    private void limpiar(){
-      jtCodigo.setText("");
-      jtDescripcion.setText("");
-      jtPrecio.setText("");
-      jtStock.setText("");
-      jcRubro.setSelectedIndex(0);
-    
+
+    private void limpiar() {
+        jtCodigo.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+        jcRubro.setSelectedIndex(0);
+        
     }
 
 
