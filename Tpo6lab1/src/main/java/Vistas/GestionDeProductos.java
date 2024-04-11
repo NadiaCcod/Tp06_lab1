@@ -57,7 +57,12 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Precio");
 
-        jbBuscar.setText("buscar");
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Rubro");
 
@@ -109,7 +114,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                                 .addComponent(jbGuardar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbEliminar)))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,6 +152,10 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
