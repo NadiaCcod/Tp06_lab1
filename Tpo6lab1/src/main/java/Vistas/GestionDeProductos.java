@@ -254,6 +254,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jtPrecio.setText("");
         jtStock.setText("");
         jcRubro.setSelectedIndex(0);
+        jbEliminar.setEnabled(false);
         
     }
 
