@@ -91,9 +91,19 @@ public class Menu extends javax.swing.JFrame {
         jmConsultas.add(jmiPorRubro);
 
         jmiPorNombre.setText("Por Nombre");
+        jmiPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPorNombreActionPerformed(evt);
+            }
+        });
         jmConsultas.add(jmiPorNombre);
 
         jmiPorPrecio.setText("Por Precio");
+        jmiPorPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPorPrecioActionPerformed(evt);
+            }
+        });
         jmConsultas.add(jmiPorPrecio);
 
         jMenuBar1.add(jmConsultas);
@@ -116,7 +126,13 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPorRubroActionPerformed
-        // TODO add your handling code here:jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+
+        PorRubro gp = new PorRubro();
+        gp.setVisible(true);
+        jdEscritorio.add(gp);
+        jdEscritorio.moveToFront(gp);
 
 
     }//GEN-LAST:event_jmiPorRubroActionPerformed
@@ -138,6 +154,26 @@ public class Menu extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jmProductosActionPerformed
+
+    private void jmiPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPorNombreActionPerformed
+ jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+
+       PorNombre gp = new PorNombre();
+        gp.setVisible(true);
+        jdEscritorio.add(gp);
+        jdEscritorio.moveToFront(gp);
+    }//GEN-LAST:event_jmiPorNombreActionPerformed
+
+    private void jmiPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPorPrecioActionPerformed
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+
+        PorPrecio gp = new PorPrecio();
+        gp.setVisible(true);
+        jdEscritorio.add(gp);
+        jdEscritorio.moveToFront(gp);
+    }//GEN-LAST:event_jmiPorPrecioActionPerformed
 
     /**
      * @param args the command line arguments

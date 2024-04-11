@@ -1,27 +1,37 @@
 package Vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-
 /**
  *
  * @author Mica
  */
 public class PorNombre extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form PorNombre
-     */
+    private DefaultTableModel modeloTabla;
+
     public PorNombre() {
         initComponents();
+        inicializarTabla();
     }
-     private void borrarFilas(){
-     
-    
-     }
-    
+
+    private void inicializarTabla() {
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Código");
+        modeloTabla.addColumn("Descripción");
+        modeloTabla.addColumn("Precio");
+        modeloTabla.addColumn("Stock");
+
+        jcTablaNombre.setModel(modeloTabla);
+    }
+
+    private void borrarFilas() {
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,9 +116,8 @@ public class PorNombre extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaNombreKeyReleased
-        
-        
-        
+
+
     }//GEN-LAST:event_jtBusquedaNombreKeyReleased
 
 
