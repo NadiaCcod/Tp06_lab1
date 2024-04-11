@@ -4,17 +4,28 @@
  */
 package Vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juanjo
  */
 public class PorPrecio extends javax.swing.JInternalFrame {
+ private DefaultTableModel modeloTabla;
 
-    /**
-     * Creates new form PorPrecio
-     */
     public PorPrecio() {
         initComponents();
+        inicializarTabla();
+    }
+
+    private void inicializarTabla() {
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Código");
+        modeloTabla.addColumn("Descripción");
+        modeloTabla.addColumn("Precio");
+        modeloTabla.addColumn("Stock");
+
+        jtPorPrecio.setModel(modeloTabla);
     }
 
     /**
@@ -33,7 +44,7 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jtPrecioMax = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtPorPrecio = new javax.swing.JTable();
 
         jLabel1.setText("Listado por Precio");
 
@@ -53,7 +64,7 @@ public class PorPrecio extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtPorPrecio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,7 +75,7 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                 "Código", "Descripcón", "Precio", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtPorPrecio);
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -143,7 +154,7 @@ public class PorPrecio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtPorPrecio;
     private javax.swing.JTextField jtPrecioMax;
     private javax.swing.JTextField jtValorMin;
     // End of variables declaration//GEN-END:variables
