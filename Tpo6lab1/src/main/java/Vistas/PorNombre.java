@@ -17,6 +17,11 @@ public class PorNombre extends javax.swing.JInternalFrame {
     public PorNombre() {
         initComponents();
     }
+     private void borrarFilas(){
+     
+    
+     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +42,12 @@ public class PorNombre extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado Por Nombre");
 
         jLabel2.setText("Escriba los primeros caracteres");
+
+        jtBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaNombreKeyReleased(evt);
+            }
+        });
 
         jcTablaNombre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +104,12 @@ public class PorNombre extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaNombreKeyReleased
+        
+        
+        
+    }//GEN-LAST:event_jtBusquedaNombreKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
