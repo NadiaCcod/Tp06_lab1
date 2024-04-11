@@ -4,19 +4,29 @@
  */
 package Vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sapat
  */
 public class PorRubro extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form PorRubro
-     */
+   private DefaultTableModel modeloTabla;
+
     public PorRubro() {
         initComponents();
+        inicializarTabla();
     }
 
+    private void inicializarTabla() {
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Código");
+        modeloTabla.addColumn("Descripción");
+        modeloTabla.addColumn("Precio");
+        modeloTabla.addColumn("Stock");
+        jtTablaRubro.setModel(modeloTabla);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
