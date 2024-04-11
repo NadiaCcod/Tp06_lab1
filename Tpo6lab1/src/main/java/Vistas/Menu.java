@@ -14,7 +14,7 @@ import entidades.Producto;
 
 public class Menu extends javax.swing.JFrame {
 
-    private static TreeSet<Producto> productos = new TreeSet<>();
+    private TreeSet<Producto> productos = new TreeSet<>();
 
     /**
      * Creates new form Menu
@@ -126,10 +126,11 @@ public class Menu extends javax.swing.JFrame {
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
 
-        GestionDeProductos gp = new GestionDeProductos();
+        GestionDeProductos gp = new GestionDeProductos(productos);
         gp.setVisible(true);
         jdEscritorio.add(gp);
         jdEscritorio.moveToFront(gp);
+        
     }//GEN-LAST:event_jmiProductoActionPerformed
 
     private void jmProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductosActionPerformed

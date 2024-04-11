@@ -15,15 +15,16 @@ import javax.swing.JOptionPane;
  */
 public class GestionDeProductos extends javax.swing.JInternalFrame {
 
-    private static TreeSet<Producto> productos;
+    private  TreeSet<Producto> productos;
 
     /**
      * Creates new form GestionDeProductos
      */
-    public GestionDeProductos() {
+    public GestionDeProductos(TreeSet<Producto> productos) {
         initComponents();
         this.productos = productos;
         llenarCombo();
+         jbEliminar.setEnabled(false);
     }
 
     /**
@@ -264,8 +265,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         
         String descripcion=jtDescripcion.getText();
         Categoria categoria=(Categoria)jcRubro.getSelectedItem();
-        Producto prodAGuardar=new Producto(codigo,descripcion,precio,stock,categoria);
-        if(productos.add(prodAGuardar)){
+        
+        Producto Guardar=new Producto(codigo, descripcion, precio, stock, categoria);
+        if(productos.add(Guardar)){
         
             JOptionPane.showMessageDialog(this, "Producto Guardado");
         }else{
