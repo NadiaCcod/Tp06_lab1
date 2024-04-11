@@ -58,7 +58,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jLabel2.setText("Código");
 
         jbNuevo.setBackground(new java.awt.Color(153, 153, 255));
-        jbNuevo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +68,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jtCodigo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jbGuardar.setBackground(new java.awt.Color(153, 153, 255));
-        jbGuardar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,13 +79,16 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jLabel3.setText("Descripción");
 
         jbEliminar.setBackground(new java.awt.Color(153, 153, 255));
-        jbEliminar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jtDescripcion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jbSalir.setBackground(new java.awt.Color(255, 102, 102));
-        jbSalir.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbSalir.setText("Salir");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -119,7 +120,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         });
 
         jbBuscar.setBackground(new java.awt.Color(153, 153, 255));
-        jbBuscar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,6 +317,20 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         
 
     }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+       int codigo= Integer.parseInt(jtCodigo.getText());
+        for (Producto listaP : productos) {
+           
+            if(listaP.getCodigo()== codigo){
+             productos.remove(listaP);
+             JOptionPane.showMessageDialog(this, "Producto Eliminado.");
+            return;
+            }
+        }
+         JOptionPane.showMessageDialog(this, "No se encontró ningún producto");
+        
+    }//GEN-LAST:event_jbEliminarActionPerformed
     private void llenarCombo() {
         jcRubro.addItem(new Categoria(1, "Limpieza"));
         jcRubro.addItem(new Categoria(2, "Comestibles"));
