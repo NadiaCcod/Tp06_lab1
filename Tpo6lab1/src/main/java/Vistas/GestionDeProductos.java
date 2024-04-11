@@ -7,6 +7,7 @@ package Vistas;
 import entidades.Categoria;
 import entidades.Producto;
 import java.util.TreeSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -222,7 +223,57 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+         // TODO add your handling code here:
+        int codigo;
+        double precio;
+        int stock;
         
+        try{
+               codigo=Integer.parseInt(jtCodigo.getText());
+   
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(this,"Ingrese un numero entero");
+            jtCodigo.setText("");
+            jtCodigo.requestFocus();
+            return;
+        }
+          
+        try{
+        
+            precio=Double.parseDouble(jtPrecio.getText());
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(this,"Ingrese un numero entero");
+            jtPrecio.setText("");
+            jtPrecio.requestFocus();
+            return;
+        }
+        try{
+        
+            stock=Integer.parseInt(jtStock.getText());
+            
+        }catch(Exception ex){
+        
+            JOptionPane.showMessageDialog(this,"Ingrese un numero entero");
+            jtStock.setText("");
+            jtStock.requestFocus();
+            return;
+        }
+        
+        String descripcion=jtDescripcion.getText();
+        Categoria categoria=(Categoria)jcRubro.getSelectedItem();
+        Producto prodAGuardar=new Producto(codigo,descripcion,precio,stock,categoria);
+        if(productos.add(prodAGuardar)){
+        
+            JOptionPane.showMessageDialog(this, "Producto Guardado");
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "El producto ya existe");
+        }
+        
+    
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcRubroActionPerformed
@@ -258,6 +309,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         
     }
 
+                                              
+       
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
