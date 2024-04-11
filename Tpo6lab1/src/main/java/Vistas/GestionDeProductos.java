@@ -280,6 +280,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Ingrese un numero entero");
             jtStock.setText("");
             jtStock.requestFocus();
+           
             return;
         }
         
@@ -290,6 +291,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         if(productos.add(Guardar)){
         
             JOptionPane.showMessageDialog(this, "Producto Guardado");
+            limpiar();
         }else{
         
             JOptionPane.showMessageDialog(this, "El producto ya existe");
