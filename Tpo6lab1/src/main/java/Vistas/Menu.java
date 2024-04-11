@@ -4,11 +4,17 @@
  */
 package Vistas;
 
+import java.util.TreeSet;
+
 /**
  *
  * @author sapat
  */
+import entidades.Producto;
+
 public class Menu extends javax.swing.JFrame {
+
+    private static TreeSet<Producto> productos = new TreeSet<>();
 
     /**
      * Creates new form Menu
@@ -28,7 +34,7 @@ public class Menu extends javax.swing.JFrame {
 
         jdEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmAdminitracion = new javax.swing.JMenu();
+        jmProductos = new javax.swing.JMenu();
         jmiProducto = new javax.swing.JMenuItem();
         jmConsultas = new javax.swing.JMenu();
         jmiPorRubro = new javax.swing.JMenuItem();
@@ -45,10 +51,15 @@ public class Menu extends javax.swing.JFrame {
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 299, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
-        jmAdminitracion.setText("Administracion");
+        jmProductos.setText("Administracion");
+        jmProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmProductosActionPerformed(evt);
+            }
+        });
 
         jmiProducto.setText("Productos");
         jmiProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -56,9 +67,9 @@ public class Menu extends javax.swing.JFrame {
                 jmiProductoActionPerformed(evt);
             }
         });
-        jmAdminitracion.add(jmiProducto);
+        jmProductos.add(jmiProducto);
 
-        jMenuBar1.add(jmAdminitracion);
+        jMenuBar1.add(jmProductos);
 
         jmConsultas.setText("Consultas");
 
@@ -88,22 +99,36 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdEscritorio)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPorRubroActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:jdEscritorio.removeAll();
+
+
     }//GEN-LAST:event_jmiPorRubroActionPerformed
 
     private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
         // TODO add your handling code here:
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
-        
+
+        GestionDeProductos gp = new GestionDeProductos();
+        gp.setVisible(true);
+        jdEscritorio.add(gp);
+        jdEscritorio.moveToFront(gp);
     }//GEN-LAST:event_jmiProductoActionPerformed
+
+    private void jmProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductosActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jmProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +168,8 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane jdEscritorio;
-    private javax.swing.JMenu jmAdminitracion;
     private javax.swing.JMenu jmConsultas;
+    private javax.swing.JMenu jmProductos;
     private javax.swing.JMenuItem jmiPorNombre;
     private javax.swing.JMenuItem jmiPorPrecio;
     private javax.swing.JMenuItem jmiPorRubro;
