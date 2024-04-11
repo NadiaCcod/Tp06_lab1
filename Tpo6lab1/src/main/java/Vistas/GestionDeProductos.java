@@ -219,7 +219,27 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        try {
+            int codigo = Integer.parseInt(jtCodigo.getText());
+            for (Producto prod : productos) {
 
+                if (prod.getCodigo() == codigo) {
+
+                    jtDescripcion.setText(prod.getDescripcion());
+                    jtPrecio.setText(prod.getPrecio() + "");
+                    jtStock.setText(prod.getStock() + "");
+                    jcRubro.setSelectedItem(prod.getCategoria());
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(this, "El producto no existe");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Ingrese un número entero");
+            jtCodigo.setText("");
+            jtCodigo.requestFocus();
+        }
 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
