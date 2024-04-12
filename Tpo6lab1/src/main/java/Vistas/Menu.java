@@ -159,7 +159,7 @@ public class Menu extends javax.swing.JFrame {
  jdEscritorio.removeAll();
         jdEscritorio.repaint();
 
-       PorNombre gp = new PorNombre();
+       PorNombre gp = new PorNombre(productos);
         gp.setVisible(true);
         jdEscritorio.add(gp);
         jdEscritorio.moveToFront(gp);

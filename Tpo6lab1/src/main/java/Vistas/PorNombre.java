@@ -1,5 +1,7 @@
 package Vistas;
 
+import entidades.Producto;
+import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -12,9 +14,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PorNombre extends javax.swing.JInternalFrame {
 
+    private TreeSet<Producto> productos;
     private DefaultTableModel modeloTabla;
 
-    public PorNombre() {
+    public PorNombre(TreeSet<Producto> productos) {
+        this.productos = productos;
         initComponents();
         inicializarTabla();
     }
@@ -30,6 +34,10 @@ public class PorNombre extends javax.swing.JInternalFrame {
     }
 
     private void borrarFilas() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jcTablaNombre.getModel();
+        while (modeloTabla.getRowCount() > 0) {
+            modeloTabla.removeRow(0);
+        }
 
     }
 
@@ -54,8 +62,8 @@ public class PorNombre extends javax.swing.JInternalFrame {
         jLabel2.setText("Escriba los primeros caracteres");
 
         jtBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtBusquedaNombreKeyReleased(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtBusquedaNombreKeyTyped(evt);
             }
         });
 
@@ -115,10 +123,24 @@ public class PorNombre extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaNombreKeyReleased
+    private void jtBusquedaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaNombreKeyTyped
+        borrarFilas();
+        String producto = jtBusquedaNombre.getText().toLowerCase();
+        for (Producto p : productos) {
+            if (p.getDescripcion().toLowerCase().startsWith(producto)) {
+                modeloTabla.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStock()
 
+                });
 
-    }//GEN-LAST:event_jtBusquedaNombreKeyReleased
+            }
+
+        }
+
+    }//GEN-LAST:event_jtBusquedaNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
