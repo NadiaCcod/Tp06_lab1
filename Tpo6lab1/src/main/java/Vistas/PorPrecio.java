@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import entidades.Producto;
+import java.util.TreeSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,8 +15,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PorPrecio extends javax.swing.JInternalFrame {
  private DefaultTableModel modeloTabla;
+ private TreeSet<Producto> productos;
 
-    public PorPrecio() {
+    public PorPrecio(TreeSet<Producto> productos) {
+        this.productos = productos;
         initComponents();
         inicializarTabla();
     }
@@ -26,6 +31,13 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Stock");
 
         jtPorPrecio.setModel(modeloTabla);
+    }
+    
+    private void borrarFilas(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) jtPorPrecio.getModel();
+        while(modeloTabla.getRowCount()>0){
+            modeloTabla.removeRow(0);
+        }
     }
 
     /**
@@ -50,9 +62,9 @@ public class PorPrecio extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Entre $:");
 
-        jtValorMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtValorMinActionPerformed(evt);
+        jtValorMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtValorMinKeyTyped(evt);
             }
         });
 
@@ -61,6 +73,11 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jtPrecioMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtPrecioMaxActionPerformed(evt);
+            }
+        });
+        jtPrecioMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtPrecioMaxKeyTyped(evt);
             }
         });
 
@@ -139,13 +156,43 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtValorMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtValorMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtValorMinActionPerformed
-
     private void jtPrecioMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPrecioMaxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtPrecioMaxActionPerformed
+
+    private void jtValorMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtValorMinKeyTyped
+        // TODO add your handling code here:
+        //jtValorMin.setEnabled(true);
+        double valorMin;
+        double valorMax;
+        borrarFilas();
+        try{
+        valorMin=Double.parseDouble(jtValorMin.getText());
+        valorMax=Double.parseDouble(jtPrecioMax.getText());
+        for (Producto p : productos) {
+            if(p.getPrecio()>=valorMin && p.getPrecio()<=valorMax){
+              modeloTabla.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStock()
+
+                });
+            }
+            
+        }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ingrese un numero entero");
+            jtValorMin.setText("");
+            jtValorMin.requestFocus();
+            return;
+        }
+    }//GEN-LAST:event_jtValorMinKeyTyped
+
+    private void jtPrecioMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioMaxKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jtPrecioMaxKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

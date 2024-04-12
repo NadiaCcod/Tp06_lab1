@@ -66,6 +66,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         });
 
         jtCodigo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtCodigoActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setBackground(new java.awt.Color(153, 153, 255));
         jbGuardar.setText("Guardar");
@@ -343,6 +348,10 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         
        dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtCodigoActionPerformed
     private void llenarCombo() {
         jcRubro.addItem(new Categoria(1, "Limpieza"));
         jcRubro.addItem(new Categoria(2, "Comestibles"));

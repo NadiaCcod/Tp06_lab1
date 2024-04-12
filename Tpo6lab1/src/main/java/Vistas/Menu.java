@@ -169,7 +169,7 @@ public class Menu extends javax.swing.JFrame {
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
 
-        PorPrecio gp = new PorPrecio();
+        PorPrecio gp = new PorPrecio(productos);
         gp.setVisible(true);
         jdEscritorio.add(gp);
         jdEscritorio.moveToFront(gp);
