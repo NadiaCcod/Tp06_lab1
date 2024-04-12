@@ -26,12 +26,12 @@ public class PorRubro extends javax.swing.JInternalFrame {
     }
 
     private void inicializarTabla() {
-        modeloTabla = new DefaultTableModel();
-        modeloTabla.addColumn("Código");
-        modeloTabla.addColumn("Descripción");
-        modeloTabla.addColumn("Precio");
-        modeloTabla.addColumn("Stock");
-        jtTablaRubro.setModel(modeloTabla);
+        this.modeloTabla = new DefaultTableModel();
+        this.modeloTabla.addColumn("Código");
+        this.modeloTabla.addColumn("Descripción");
+        this.modeloTabla.addColumn("Precio");
+        this.modeloTabla.addColumn("Stock");
+        jtTablaRubro.setModel(this.modeloTabla);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,12 +121,12 @@ private void llenarCombo() {
     }
 
     private void jcListaRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcListaRubroItemStateChanged
-      borrarFilas();  
+       borrarFilas();
                
       for (Producto p : productos) {
            
           if(p.getCategoria().getNombre().equalsIgnoreCase(jcListaRubro.getSelectedItem().toString())) {
-                modeloTabla.addRow(new Object[]{
+                ((DefaultTableModel)jtTablaRubro.getModel()).addRow(new Object[]{
                     p.getCodigo(),
                     p.getDescripcion(),
                     p.getPrecio(),
@@ -140,10 +140,7 @@ private void llenarCombo() {
      
     }//GEN-LAST:event_jcListaRubroItemStateChanged
  private void borrarFilas() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) jtTablaRubro.getModel();
-        while (modeloTabla.getRowCount() > 0) {
-            modeloTabla.removeRow(0);
-        }
+    ((DefaultTableModel)jtTablaRubro.getModel()).setRowCount(0);
  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
