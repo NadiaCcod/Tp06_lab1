@@ -124,8 +124,7 @@ private void llenarCombo() {
       borrarFilas();  
                
       for (Producto p : productos) {
-            System.out.println("categoria" +p.getCategoria().getCodigo());
-            System.out.println(jcListaRubro.getSelectedItem());
+           
           if(p.getCategoria().getNombre().equalsIgnoreCase(jcListaRubro.getSelectedItem().toString())) {
                 modeloTabla.addRow(new Object[]{
                     p.getCodigo(),
