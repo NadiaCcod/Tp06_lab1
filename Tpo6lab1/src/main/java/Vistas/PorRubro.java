@@ -4,19 +4,35 @@
  */
 package Vistas;
 
+import entidades.Categoria;
+import entidades.Producto;
+import java.util.TreeSet;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sapat
  */
 public class PorRubro extends javax.swing.JInternalFrame {
+  private TreeSet<Producto> productos;
+   private DefaultTableModel modeloTabla;
 
-    /**
-     * Creates new form PorRubro
-     */
-    public PorRubro() {
+    public PorRubro(TreeSet<Producto> productos) {
+        this.productos = productos;
         initComponents();
+        llenarCombo();
+        inicializarTabla();
+       
     }
 
+    private void inicializarTabla() {
+        this.modeloTabla = new DefaultTableModel();
+        this.modeloTabla.addColumn("Código");
+        this.modeloTabla.addColumn("Descripción");
+        this.modeloTabla.addColumn("Precio");
+        this.modeloTabla.addColumn("Stock");
+        jtTablaRubro.setModel(this.modeloTabla);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +53,11 @@ public class PorRubro extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Elija el Rubro");
 
-        jcListaRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestibles", "Limpieza", "Perfumeria" }));
+        jcListaRubro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcListaRubroItemStateChanged(evt);
+            }
+        });
 
         jtTablaRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,13 +114,39 @@ public class PorRubro extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void llenarCombo() {
+        jcListaRubro.addItem(new Categoria(1, "Limpieza"));
+        jcListaRubro.addItem(new Categoria(2, "Comestibles"));
+        jcListaRubro.addItem(new Categoria(3, "Perfumeria"));
+    }
 
+    private void jcListaRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcListaRubroItemStateChanged
+       borrarFilas();
+               
+      for (Producto p : productos) {
+           
+          if(p.getCategoria().getNombre().equalsIgnoreCase(jcListaRubro.getSelectedItem().toString())) {
+                ((DefaultTableModel)jtTablaRubro.getModel()).addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStock()
 
+                });
+         
+            } 
+
+        }
+     
+    }//GEN-LAST:event_jcListaRubroItemStateChanged
+ private void borrarFilas() {
+    ((DefaultTableModel)jtTablaRubro.getModel()).setRowCount(0);
+ }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcListaRubro;
+    private javax.swing.JComboBox<Categoria> jcListaRubro;
     private javax.swing.JTable jtTablaRubro;
     // End of variables declaration//GEN-END:variables
 }

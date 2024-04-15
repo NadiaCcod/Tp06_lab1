@@ -1,21 +1,44 @@
 package Vistas;
 
+import entidades.Producto;
+import java.util.TreeSet;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-
 /**
  *
  * @author Mica
  */
 public class PorNombre extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form PorNombre
-     */
-    public PorNombre() {
+    private TreeSet<Producto> productos;
+    private DefaultTableModel modeloTabla;
+
+    public PorNombre(TreeSet<Producto> productos) {
+        this.productos = productos;
         initComponents();
+        inicializarTabla();
+    }
+
+    private void inicializarTabla() {
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Código");
+        modeloTabla.addColumn("Descripción");
+        modeloTabla.addColumn("Precio");
+        modeloTabla.addColumn("Stock");
+
+        jcTablaNombre.setModel(modeloTabla);
+    }
+
+    private void borrarFilas() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jcTablaNombre.getModel();
+        while (modeloTabla.getRowCount() > 0) {
+            modeloTabla.removeRow(0);
+        }
+
     }
 
     /**
@@ -37,6 +60,12 @@ public class PorNombre extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado Por Nombre");
 
         jLabel2.setText("Escriba los primeros caracteres");
+
+        jtBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtBusquedaNombreKeyTyped(evt);
+            }
+        });
 
         jcTablaNombre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +122,25 @@ public class PorNombre extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtBusquedaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaNombreKeyTyped
+        borrarFilas();
+        String producto = jtBusquedaNombre.getText().toLowerCase();
+        for (Producto p : productos) {
+            if (p.getDescripcion().toLowerCase().startsWith(producto)) {
+                modeloTabla.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStock()
+
+                });
+
+            }
+
+        }
+
+    }//GEN-LAST:event_jtBusquedaNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
